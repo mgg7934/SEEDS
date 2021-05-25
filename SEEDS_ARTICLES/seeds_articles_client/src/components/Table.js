@@ -1,4 +1,5 @@
-// JavaScript source code
+// JavaScript source code, this was taught from Several class mates and Stackoverflow threads
+// this is not purely my own code @Sanjeel Nath
 import React from 'react';
 
 export default class Table extends React.Component {

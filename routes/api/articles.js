@@ -1,4 +1,6 @@
 // routes/api/books.js
+// CODE WAS MADE THROUGH HELP OF SEVERAL STACKOVERFLOW THREADS AS WELL AS HELP FROM OTHER STUDENTS
+// Code was not specifcally return on my own @Sanjeel Nath
 
 const express = require('express');
 const router = express.Router();
@@ -17,7 +19,7 @@ router.get('/test', (req, res) => res.send('article route testing!'));
 router.get('/', (req, res) => {
     Article.find()
         .then(articles => res.json(articles))
-        .catch(err => res.status(404).json({ nobooksfound: 'No Books found' }));
+        .catch(err => res.status(404).json({ nobooksfound: 'No Articles are found' }));
 });
 
 // @route GET api/books/:id
@@ -26,7 +28,7 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
     Article.findById(req.params.id)
         .then(articles => res.json(articles))
-        .catch(err => res.status(404).json({ nobookfound: 'No Book found' }));
+        .catch(err => res.status(404).json({ nobookfound: 'No Article found' }));
 });
 
 // @route GET api/books
