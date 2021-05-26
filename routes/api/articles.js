@@ -1,38 +1,38 @@
-// routes/api/books.js
+// routes/api/articles.js
 // CODE WAS MADE THROUGH HELP OF SEVERAL STACKOVERFLOW THREADS AS WELL AS HELP FROM OTHER STUDENTS
 // Code was not specifcally return on my own @Sanjeel Nath
 
 const express = require('express');
 const router = express.Router();
 
-// Load Book model
+// Load Article model
 const Article = require('../../models/Article');
 
-// @route GET api/books/test
-// @description tests books route
+// @route GET api/articles/test
+// @description tests articles route
 // @access Public
 router.get('/test', (req, res) => res.send('article route testing!'));
 
-// @route GET api/books
-// @description Get all books
+// @route GET api/articles
+// @description Get all articles
 // @access Public
 router.get('/', (req, res) => {
     Article.find()
         .then(articles => res.json(articles))
-        .catch(err => res.status(404).json({ nobooksfound: 'No Articles are found' }));
+        .catch(err => res.status(404).json({ noarticlesfound: 'No Articles are found' }));
 });
 
-// @route GET api/books/:id
-// @description Get single book by id
+// @route GET api/articles/:id
+// @description Get single articles by id
 // @access Public
 router.get('/:id', (req, res) => {
     Article.findById(req.params.id)
         .then(articles => res.json(articles))
-        .catch(err => res.status(404).json({ nobookfound: 'No Article found' }));
+        .catch(err => res.status(404).json({ noarticlesfound: 'No Article found' }));
 });
 
-// @route GET api/books
-// @description add/save book
+// @route GET api/articles
+// @description add/save articles
 // @access Public
 router.post('/', (req, res) => {
     Article.create(req.body)
@@ -40,8 +40,8 @@ router.post('/', (req, res) => {
         .catch(err => res.status(400).json({ error: 'Unable to add this book' }));
 });
 
-// @route GET api/books/:id
-// @description Update book
+// @route GET api/articles/:id
+// @description Update articles
 // @access Public
 router.put('/:id', (req, res) => {
     Article.findByIdAndUpdate(req.params.id, req.body)
@@ -51,13 +51,13 @@ router.put('/:id', (req, res) => {
         );
 });
 
-// @route GET api/books/:id
-// @description Delete book by id
+// @route GET api/articles/:id
+// @description Delete articles by id
 // @access Public
 router.delete('/:id', (req, res) => {
     Article.findByIdAndRemove(req.params.id, req.body)
-        .then(articles => res.json({ mgs: 'Book entry deleted successfully' }))
-        .catch(err => res.status(404).json({ error: 'No such a book' }));
+        .then(articles => res.json({ mgs: 'Article entry deleted successfully' }))
+        .catch(err => res.status(404).json({ error: 'No such a articles' }));
 });
 
 module.exports = router;

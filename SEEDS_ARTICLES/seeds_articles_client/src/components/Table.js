@@ -12,6 +12,8 @@ export default class Table extends React.Component {
         this.getRowsData = this.getRowsData.bind(this);
         this.getKeys = this.getKeys.bind(this);
     }
+
+    //gets columns
     getKeys = function () {
         return columns;
     }
