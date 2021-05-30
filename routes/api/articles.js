@@ -1,6 +1,6 @@
 // routes/api/articles.js
 // CODE WAS MADE THROUGH HELP OF SEVERAL STACKOVERFLOW THREADS AS WELL AS HELP FROM OTHER STUDENTS
-// Code was not specifcally return on my own @Sanjeel Nath
+// Code was not specifcally written on my own @Sanjeel Nath
 
 const express = require('express');
 const router = express.Router();
