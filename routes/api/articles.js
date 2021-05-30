@@ -29,20 +29,20 @@ router.get('/filter', async (req, res) => {
 
     if(author=="" && year!="")
     {
-        Article.find({ "year": {$regex:year}}  )
+        Article.find({ "Strength of claim": {$regex:year}}  )
         .then(articles => res.json(articles))
         .catch(err => res.status(404).json({ nobooksfound: 'No Books found' }));
     }
 
 
     else if(author!="" && year==""){
-        Article.find({ "author": {$regex:author} }  )
+        Article.find({ "SE Practice": {$regex:author} }  )
         .then(articles => res.json(articles))
         .catch(err => res.status(404).json({ nobooksfound: 'No Books found' }));
     }
     else if(author!="" && year!=""){
 
-        Article.find({ $and: [ {"author": {$regex:author} },{"year": {$regex:year}} ] }   )
+        Article.find({ $and: [ {"SE Practice": {$regex:author} },{"Strength of claim": {$regex:year}} ] }   )
         .then(articles => res.json(articles))
         .catch(err => res.status(404).json({ nobooksfound: 'No Books found' }));
 
