@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app.js",
     "app": "nodemon app.js",
-    "test": "npm run build"
+    "test": "npm install"
   },
   "repository": {
     "type": "git",
