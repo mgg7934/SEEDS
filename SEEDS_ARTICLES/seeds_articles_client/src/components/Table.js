@@ -1,4 +1,6 @@
 // JavaScript source code
+// CODE WAS MADE THROUGH HELP OF SEVERAL STACKOVERFLOW THREADS AS WELL AS HELP FROM OTHER STUDENTS
+// Code was not specifcally written on my own @Sanjeel Nath
 import React from 'react';
 
 export default class Table extends React.Component {
@@ -11,24 +13,23 @@ export default class Table extends React.Component {
     }
 
     getKeys = function () {
-        if(this.props.data.length>0){
+        if (this.props.data.length > 0) {
             return Object.keys(this.props.data[0]);
         }
-     
+
     }
 
     getHeader = function () {
         var keys = this.getKeys();
-        if(keys)
-        {
-               return keys.map((key, index) => {
-            return <th onClick={this.sort.bind(this,key)} key={key}>{key.toUpperCase()}</th>
-        })
+        if (keys) {
+            return keys.map((key, index) => {
+                return <th onClick={this.sort.bind(this, key)} key={key}>{key.toUpperCase()}</th>
+            })
         }
-     
+
     }
-    sort(k){
-       this.props.sortmethod(k)
+    sort(k) {
+        this.props.sortmethod(k)
     }
     getRowsData = function () {
         var items = this.props.data;
@@ -57,6 +58,6 @@ export default class Table extends React.Component {
 
 const RenderRow = (props) => {
     return props.keys.map((key, index) => {
-        return <td key={props.data[key]+index}>{props.data[key]}</td>
+        return <td key={props.data[key] + index}>{props.data[key]}</td>
     })
 }

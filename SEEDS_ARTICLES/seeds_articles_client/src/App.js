@@ -1,3 +1,6 @@
+// JavaScript source code
+// CODE WAS MADE THROUGH HELP OF SEVERAL STACKOVERFLOW THREADS AS WELL AS HELP FROM OTHER STUDENTS
+// Code was not specifcally written on my own @Sanjeel Nath
 import logo from './logo.svg';
 import './App.css';
 import React, { Component } from 'react';

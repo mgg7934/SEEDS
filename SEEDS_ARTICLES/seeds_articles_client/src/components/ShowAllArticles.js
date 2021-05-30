@@ -1,4 +1,6 @@
-// JavaScript source code
+// Show all articles
+// CODE WAS MADE THROUGH HELP OF SEVERAL STACKOVERFLOW THREADS AS WELL AS HELP FROM OTHER STUDENTS
+// Code was not specifcally written on my own @Sanjeel Nath
 import React, { Component } from "react";
 import Table from "./Table.js";
 import { Link } from "react-router-dom";
