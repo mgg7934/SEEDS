@@ -21,7 +21,44 @@ router.get('/', (req, res) => {
         .then(articles => res.json(articles))
         .catch(err => res.status(404).json({ noarticlesfound: 'No Articles are found' }));
 });
+router.get('/filter', async (req, res) => {
+   
+    var year=req.query.year
+    var author=req.query.author
 
+
+    if(author=="" && year!="")
+    {
+        Article.find({ "year": {$regex:year}}  )
+        .then(articles => res.json(articles))
+        .catch(err => res.status(404).json({ nobooksfound: 'No Books found' }));
+    }
+
+
+    else if(author!="" && year==""){
+        Article.find({ "author": {$regex:author} }  )
+        .then(articles => res.json(articles))
+        .catch(err => res.status(404).json({ nobooksfound: 'No Books found' }));
+    }
+    else if(author!="" && year!=""){
+
+        Article.find({ $and: [ {"author": {$regex:author} },{"year": {$regex:year}} ] }   )
+        .then(articles => res.json(articles))
+        .catch(err => res.status(404).json({ nobooksfound: 'No Books found' }));
+
+      
+
+    }
+    else{
+        Article.find()
+        .then(articles => res.json(articles))
+        .catch(err => res.status(404).json({ nobooksfound: 'No Books found' }));
+    }
+    
+  
+    
+        
+ });
 // @route GET api/articles/:id
 // @description Get single articles by id
 // @access Public
