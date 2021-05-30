@@ -1,10 +1,7 @@
-// JavaScript source code, this was taught from Several class mates and Stackoverflow threads
-// this is not purely my own code @Sanjeel Nath
+// JavaScript source code
 import React from 'react';
-const columns = ["author", "title", "SE Practice", "Strength of claim", "journal", "year", "month", "number", "pages", "DOI"]
 
 export default class Table extends React.Component {
-
 
     constructor(props) {
         super(props);
@@ -13,21 +10,29 @@ export default class Table extends React.Component {
         this.getKeys = this.getKeys.bind(this);
     }
 
-    //gets columns
     getKeys = function () {
-        return columns;
+        if(this.props.data.length>0){
+            return Object.keys(this.props.data[0]);
+        }
+     
     }
 
     getHeader = function () {
-        var keys = columns;
-        return keys.map((key, index) => {
-            return <th key={key}>{key.toUpperCase()}</th>
+        var keys = this.getKeys();
+        if(keys)
+        {
+               return keys.map((key, index) => {
+            return <th onClick={this.sort.bind(this,key)} key={key}>{key.toUpperCase()}</th>
         })
+        }
+     
     }
-
+    sort(k){
+       this.props.sortmethod(k)
+    }
     getRowsData = function () {
         var items = this.props.data;
-        var keys = columns;
+        var keys = this.getKeys();
         return items.map((row, index) => {
             return <tr key={index}><RenderRow key={index} data={row} keys={keys} /></tr>
         })
@@ -36,7 +41,7 @@ export default class Table extends React.Component {
     render() {
         return (
             <div>
-                <table>
+                <table class="tbl" width="100%">
                     <thead>
                         <tr>{this.getHeader()}</tr>
                     </thead>
@@ -52,6 +57,6 @@ export default class Table extends React.Component {
 
 const RenderRow = (props) => {
     return props.keys.map((key, index) => {
-        return <td key={props.data[key]}>{props.data[key]}</td>
+        return <td key={props.data[key]+index}>{props.data[key]}</td>
     })
 }
